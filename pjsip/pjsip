@@ -60,20 +60,32 @@ find src | grep "\\include$" | sort
 }
 
 
-function armv7() { _build "armv7"; }
-function armv7s() { _build "armv7s"; }
-function arm64() { _build "arm64"; }
+function armv7() 
+{ 
+  export CFLAGS="-g"
+  _build "armv7"; 
+}
+function armv7s() 
+{
+  export CFLAGS="-g"
+ _build "armv7s"; 
+}
+function arm64() 
+{
+  export CFLAGS="-g"
+ _build "arm64"; 
+}
 
 function i386() {
 export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer
-export CFLAGS="-O2 -m32 -mios-simulator-version-min=5.0"
+export CFLAGS="-O2 -m32 -mios-simulator-version-min=5.0 -g"
 export LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.0"
 _build "i386"
 }
 
 function x86_64() {
 export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer
-export CFLAGS="-O2 -m64 -mios-simulator-version-min=5.0"
+export CFLAGS="-O2 -m64 -mios-simulator-version-min=5.0 -g"
 export LDFLAGS="-O2 -m64 -mios-simulator-version-min=5.0"
 _build "x86_64"
 }
